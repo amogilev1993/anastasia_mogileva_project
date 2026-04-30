@@ -1,0 +1,40 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Env / secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# Dependencies (универсально, конкретные стеки добавим позже)
+node_modules/
+vendor/
+__pycache__/
+*.pyc
+.venv/
+venv/
+target/
+
+# Build / dist
+dist/
+build/
+out/
+*.log
+
+# Coverage / cache
+coverage/
+.cache/
+.pytest_cache/
+.mypy_cache/
+
+# Claude Code локальные настройки (не общие)
+.claude/settings.local.json
