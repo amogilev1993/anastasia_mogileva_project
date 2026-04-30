@@ -1,0 +1,8 @@
+term,kind,parent,characteristics,inverse_of,note
+Person,Class,owl:Thing,,,Базовый класс
+Male,Class,Person,,,Подкласс Person
+Female,Class,Person,,,Подкласс Person
+hasParent,ObjectProperty,hasAncestor,Transitive,,A — потомок B
+hasAncestor,ObjectProperty,owl:topObjectProperty,Transitive,,A — потомок B (любое поколение)
+hasChild,ObjectProperty,owl:topObjectProperty,,hasParent,Инверсия hasParent
+hasSibling,ObjectProperty,owl:topObjectProperty,Symmetric,,Сиблинги

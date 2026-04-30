@@ -1,0 +1,7 @@
+case_id,input_json,expected_json,category,notes
+Q1,"{""query_type"":""sparql"",""target"":""Male"",""op"":""rdf:type""}","{""before"":[""Boris"",""Dmitry""],""after"":[""Boris"",""Dmitry""],""nonempty_after"":true}",smoke,простой запрос - rdf:type
+Q2,"{""query_type"":""sparql"",""subject"":""Dmitry"",""predicate"":""hasAncestor""}","{""before"":[],""after"":[""Anna"",""Boris""],""nonempty_after"":true,""inferred"":true}",edge,транзитивность hasAncestor
+Q3,"{""query_type"":""sparql"",""subject"":""Anna"",""predicate"":""hasChild""}","{""before"":[],""after"":[""Boris"",""Clara""],""nonempty_after"":true,""inferred"":true}",edge,инверсия hasChild = hasParent^-1
+Q4,"{""query_type"":""sparql"",""subject"":""Clara"",""predicate"":""hasSibling""}","{""before"":[],""after"":[""Boris""],""nonempty_after"":true,""inferred"":true}",edge,симметрия hasSibling
+Q5,"{""query_type"":""sparql"",""subject"":""Anna"",""predicate"":""hasChild/hasChild"",""op"":""chain""}","{""before"":[],""after"":[""Dmitry"",""Elena""],""nonempty_after"":true,""inferred"":true}",robustness,цепочка свойств (внуки)
+NEG1,"{""query_type"":""sparql"",""subject"":""Anna"",""predicate"":""hasParent""}","{""after"":[],""nonempty_after"":false}",negative,у Анны нет родителя в данных - результат должен быть пустым

@@ -1,0 +1,17 @@
+# 5 SPARQL-запросов разной сложности.
+# Префиксы добавляются ноутбуком автоматически. Каждый запрос отделён маркером ===.
+
+=== Q1 :: простой :: Все индивиды класса Male
+SELECT ?x WHERE { ?x rdf:type :Male }
+
+=== Q2 :: транзитивность :: Все предки Дмитрия
+SELECT ?x WHERE { :Dmitry :hasAncestor ?x }
+
+=== Q3 :: инверсия :: Дети Анны (через hasChild = hasParent⁻¹)
+SELECT ?x WHERE { :Anna :hasChild ?x }
+
+=== Q4 :: симметрия :: Сиблинги Клары
+SELECT ?x WHERE { :Clara :hasSibling ?x }
+
+=== Q5 :: цепочка / смешанный :: Внуки Анны
+SELECT ?x WHERE { :Anna :hasChild ?y . ?y :hasChild ?x }

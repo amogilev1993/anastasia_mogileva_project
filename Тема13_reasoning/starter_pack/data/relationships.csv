@@ -1,0 +1,6 @@
+subject,predicate,object,note
+Boris,hasParent,Anna,явный факт
+Clara,hasParent,Anna,явный факт
+Dmitry,hasParent,Boris,явный факт
+Elena,hasParent,Clara,явный факт
+Boris,hasSibling,Clara,явный факт

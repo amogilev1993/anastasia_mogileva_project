@@ -1,0 +1,9 @@
+{
+  "Q1": {"before": ["Boris", "Dmitry"], "after": ["Boris", "Dmitry"]},
+  "Q2": {"before": [], "after": ["Anna", "Boris"]},
+  "Q3": {"before": [], "after": ["Boris", "Clara"]},
+  "Q4": {"before": [], "after": ["Boris"]},
+  "Q5": {"before": [], "after": ["Dmitry", "Elena"]},
+  "min_inferred_facts": 3,
+  "min_nonempty_after": 3
+}
