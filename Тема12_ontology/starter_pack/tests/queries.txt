@@ -1,0 +1,32 @@
+# Запросы (для owlready2 / Python-итераций) — соответствуют CQ из competency_questions.md
+# Формат: # CQx; <psevdocode>
+
+# CQ1: курсы студента alice
+list(alice.enrolledIn)
+
+# CQ2: преподаватели курса ml101
+list(ml101.taughtBy)   # инверсное свойство к teaches
+
+# CQ3: кафедра проф. Smith
+list(prof_smith.memberOf)
+
+# CQ4: аспиранты проф. Smith
+list(prof_smith.supervises)
+
+# CQ5: кафедры факультета инженерии
+[d for d in onto.Department.instances() if eng_faculty in d.partOf]
+
+# CQ6: публикации проф. Smith (через inverse hasAuthor)
+[p for p in onto.Publication.instances() if prof_smith in p.hasAuthor]
+
+# CQ7: аудитории курса db201
+list(db201.heldIn)
+
+# CQ8: курсы кафедры cs_dept
+[c for c in onto.Course.instances() if cs_dept in c.offeredBy]
+
+# CQ9: кредиты курса ml101
+ml101.hasCredits
+
+# CQ10: участники проекта AIProject
+[p for p in onto.Person.instances() if ai_project in p.worksOnProject]

@@ -1,0 +1,16 @@
+name,kind,domain,range,functional,inverse_of
+memberOf,ObjectProperty,Person,AcademicUnit,False,
+partOf,ObjectProperty,Department,Faculty,False,
+teaches,ObjectProperty,AcademicStaff,Course,False,taughtBy
+taughtBy,ObjectProperty,Course,AcademicStaff,False,teaches
+enrolledIn,ObjectProperty,Student,Course,False,
+supervises,ObjectProperty,Professor,PhDStudent,False,
+offeredBy,ObjectProperty,Course,Department,False,
+hasAuthor,ObjectProperty,Publication,Person,False,
+worksOnProject,ObjectProperty,Person,Project,False,
+heldIn,ObjectProperty,Course,Room,False,
+hasName,DataProperty,Thing,str,False,
+hasEmail,DataProperty,Person,str,True,
+hasAge,DataProperty,Person,int,False,
+hasCredits,DataProperty,Course,int,False,
+hasYear,DataProperty,Publication,int,False,

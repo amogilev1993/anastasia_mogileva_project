@@ -1,0 +1,398 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://example.org/university.owl"
+         xmlns="http://example.org/university.owl#">
+
+<owl:Ontology rdf:about="http://example.org/university.owl"/>
+
+<owl:ObjectProperty rdf:about="#memberOf">
+  <rdfs:domain rdf:resource="#Person"/>
+  <rdfs:range rdf:resource="#AcademicUnit"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#partOf">
+  <rdfs:domain rdf:resource="#Department"/>
+  <rdfs:range rdf:resource="#Faculty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#teaches">
+  <rdfs:domain rdf:resource="#AcademicStaff"/>
+  <rdfs:range rdf:resource="#Course"/>
+  <owl:inverseOf rdf:resource="#taughtBy"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#taughtBy">
+  <rdfs:domain rdf:resource="#Course"/>
+  <rdfs:range rdf:resource="#AcademicStaff"/>
+  <owl:inverseOf rdf:resource="#teaches"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#enrolledIn">
+  <rdfs:domain rdf:resource="#Student"/>
+  <rdfs:range rdf:resource="#Course"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#supervises">
+  <rdfs:domain rdf:resource="#Professor"/>
+  <rdfs:range rdf:resource="#PhDStudent"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#offeredBy">
+  <rdfs:domain rdf:resource="#Course"/>
+  <rdfs:range rdf:resource="#Department"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasAuthor">
+  <rdfs:domain rdf:resource="#Publication"/>
+  <rdfs:range rdf:resource="#Person"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#worksOnProject">
+  <rdfs:domain rdf:resource="#Person"/>
+  <rdfs:range rdf:resource="#Project"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#heldIn">
+  <rdfs:domain rdf:resource="#Course"/>
+  <rdfs:range rdf:resource="#Room"/>
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:about="#hasName">
+  <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasEmail">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Person"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasAge">
+  <rdfs:domain rdf:resource="#Person"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasCredits">
+  <rdfs:domain rdf:resource="#Course"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasYear">
+  <rdfs:domain rdf:resource="#Publication"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:Class rdf:about="#Person">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#AcademicUnit">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Course">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#taughtBy"/>
+      <owl:onClass rdf:resource="#AcademicStaff"/>
+      <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:about="#Publication">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Project">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Room">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Student">
+  <rdfs:subClassOf rdf:resource="#Person"/>
+  <owl:disjointWith rdf:resource="#AcademicStaff"/>
+</owl:Class>
+
+<owl:Class rdf:about="#UndergraduateStudent">
+  <rdfs:subClassOf rdf:resource="#Student"/>
+</owl:Class>
+
+<owl:Class rdf:about="#GraduateStudent">
+  <rdfs:subClassOf rdf:resource="#Student"/>
+</owl:Class>
+
+<owl:Class rdf:about="#MasterStudent">
+  <rdfs:subClassOf rdf:resource="#GraduateStudent"/>
+</owl:Class>
+
+<owl:Class rdf:about="#PhDStudent">
+  <rdfs:subClassOf rdf:resource="#GraduateStudent"/>
+</owl:Class>
+
+<owl:Class rdf:about="#AcademicStaff">
+  <rdfs:subClassOf rdf:resource="#Person"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Professor">
+  <rdfs:subClassOf rdf:resource="#AcademicStaff"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Lecturer">
+  <rdfs:subClassOf rdf:resource="#AcademicStaff"/>
+</owl:Class>
+
+<owl:Class rdf:about="#AdministrativeStaff">
+  <rdfs:subClassOf rdf:resource="#Person"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Department">
+  <rdfs:subClassOf rdf:resource="#AcademicUnit"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Faculty">
+  <rdfs:subClassOf rdf:resource="#AcademicUnit"/>
+</owl:Class>
+
+<owl:Class rdf:about="#UndergraduateCourse">
+  <rdfs:subClassOf rdf:resource="#Course"/>
+</owl:Class>
+
+<owl:Class rdf:about="#GraduateCourse">
+  <rdfs:subClassOf rdf:resource="#Course"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Article">
+  <rdfs:subClassOf rdf:resource="#Publication"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Book">
+  <rdfs:subClassOf rdf:resource="#Publication"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Classroom">
+  <rdfs:subClassOf rdf:resource="#Room"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Lab">
+  <rdfs:subClassOf rdf:resource="#Room"/>
+</owl:Class>
+
+<owl:NamedIndividual rdf:about="#alice">
+  <rdf:type rdf:resource="#UndergraduateStudent"/>
+  <memberOf rdf:resource="#cs_dept"/>
+  <enrolledIn rdf:resource="#db201"/>
+  <enrolledIn rdf:resource="#calc100"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Alice Ivanova</hasName>
+  <hasEmail rdf:datatype="http://www.w3.org/2001/XMLSchema#string">alice@uni.edu</hasEmail>
+  <hasAge rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">20</hasAge>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#bob">
+  <rdf:type rdf:resource="#UndergraduateStudent"/>
+  <memberOf rdf:resource="#cs_dept"/>
+  <enrolledIn rdf:resource="#db201"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bob Petrov</hasName>
+  <hasEmail rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bob@uni.edu</hasEmail>
+  <hasAge rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">21</hasAge>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#carol">
+  <rdf:type rdf:resource="#MasterStudent"/>
+  <memberOf rdf:resource="#cs_dept"/>
+  <enrolledIn rdf:resource="#ml101"/>
+  <enrolledIn rdf:resource="#ai301"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Carol Smirnova</hasName>
+  <hasEmail rdf:datatype="http://www.w3.org/2001/XMLSchema#string">carol@uni.edu</hasEmail>
+  <hasAge rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">23</hasAge>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#david">
+  <rdf:type rdf:resource="#PhDStudent"/>
+  <memberOf rdf:resource="#cs_dept"/>
+  <enrolledIn rdf:resource="#algo301"/>
+  <worksOnProject rdf:resource="#ai_project"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">David Sokolov</hasName>
+  <hasEmail rdf:datatype="http://www.w3.org/2001/XMLSchema#string">david@uni.edu</hasEmail>
+  <hasAge rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">26</hasAge>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#eve">
+  <rdf:type rdf:resource="#PhDStudent"/>
+  <memberOf rdf:resource="#math_dept"/>
+  <enrolledIn rdf:resource="#ml101"/>
+  <worksOnProject rdf:resource="#ai_project"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Eve Volkova</hasName>
+  <hasEmail rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eve@uni.edu</hasEmail>
+  <hasAge rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">28</hasAge>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#frank">
+  <rdf:type rdf:resource="#MasterStudent"/>
+  <memberOf rdf:resource="#math_dept"/>
+  <enrolledIn rdf:resource="#calc100"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Frank Orlov</hasName>
+  <hasEmail rdf:datatype="http://www.w3.org/2001/XMLSchema#string">frank@uni.edu</hasEmail>
+  <hasAge rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">24</hasAge>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#prof_smith">
+  <rdf:type rdf:resource="#Professor"/>
+  <memberOf rdf:resource="#cs_dept"/>
+  <teaches rdf:resource="#ml101"/>
+  <teaches rdf:resource="#algo301"/>
+  <teaches rdf:resource="#ai301"/>
+  <supervises rdf:resource="#david"/>
+  <supervises rdf:resource="#eve"/>
+  <worksOnProject rdf:resource="#ai_project"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sergey Smith</hasName>
+  <hasEmail rdf:datatype="http://www.w3.org/2001/XMLSchema#string">smith@uni.edu</hasEmail>
+  <hasAge rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">52</hasAge>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#prof_brown">
+  <rdf:type rdf:resource="#Professor"/>
+  <memberOf rdf:resource="#math_dept"/>
+  <teaches rdf:resource="#calc100"/>
+  <worksOnProject rdf:resource="#robotics_project"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Olga Brown</hasName>
+  <hasEmail rdf:datatype="http://www.w3.org/2001/XMLSchema#string">brown@uni.edu</hasEmail>
+  <hasAge rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">47</hasAge>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#lect_jones">
+  <rdf:type rdf:resource="#Lecturer"/>
+  <memberOf rdf:resource="#physics_dept"/>
+  <teaches rdf:resource="#db201"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ivan Jones</hasName>
+  <hasEmail rdf:datatype="http://www.w3.org/2001/XMLSchema#string">jones@uni.edu</hasEmail>
+  <hasAge rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">35</hasAge>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#admin_pavlov">
+  <rdf:type rdf:resource="#AdministrativeStaff"/>
+  <memberOf rdf:resource="#eng_faculty"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pavel Pavlov</hasName>
+  <hasEmail rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pavlov@uni.edu</hasEmail>
+  <hasAge rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">40</hasAge>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#cs_dept">
+  <rdf:type rdf:resource="#Department"/>
+  <partOf rdf:resource="#eng_faculty"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Computer Science Department</hasName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#math_dept">
+  <rdf:type rdf:resource="#Department"/>
+  <partOf rdf:resource="#sci_faculty"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mathematics Department</hasName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#physics_dept">
+  <rdf:type rdf:resource="#Department"/>
+  <partOf rdf:resource="#sci_faculty"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Physics Department</hasName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#eng_faculty">
+  <rdf:type rdf:resource="#Faculty"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Faculty of Engineering</hasName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#sci_faculty">
+  <rdf:type rdf:resource="#Faculty"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Faculty of Science</hasName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ml101">
+  <rdf:type rdf:resource="#GraduateCourse"/>
+  <offeredBy rdf:resource="#cs_dept"/>
+  <heldIn rdf:resource="#room_101"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Machine Learning 101</hasName>
+  <hasCredits rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</hasCredits>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#db201">
+  <rdf:type rdf:resource="#UndergraduateCourse"/>
+  <offeredBy rdf:resource="#cs_dept"/>
+  <heldIn rdf:resource="#room_101"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Databases 201</hasName>
+  <hasCredits rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</hasCredits>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#calc100">
+  <rdf:type rdf:resource="#UndergraduateCourse"/>
+  <offeredBy rdf:resource="#math_dept"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calculus 100</hasName>
+  <hasCredits rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</hasCredits>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#algo301">
+  <rdf:type rdf:resource="#GraduateCourse"/>
+  <offeredBy rdf:resource="#cs_dept"/>
+  <heldIn rdf:resource="#lab_202"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Advanced Algorithms</hasName>
+  <hasCredits rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</hasCredits>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ai301">
+  <rdf:type rdf:resource="#GraduateCourse"/>
+  <offeredBy rdf:resource="#cs_dept"/>
+  <heldIn rdf:resource="#lab_202"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Artificial Intelligence</hasName>
+  <hasCredits rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</hasCredits>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#paper_ml">
+  <rdf:type rdf:resource="#Article"/>
+  <hasAuthor rdf:resource="#prof_smith"/>
+  <hasAuthor rdf:resource="#david"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Deep Learning for Tabular Data</hasName>
+  <hasYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2024</hasYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#paper_db">
+  <rdf:type rdf:resource="#Article"/>
+  <hasAuthor rdf:resource="#lect_jones"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Indexing in NoSQL Systems</hasName>
+  <hasYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2023</hasYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#book_ai">
+  <rdf:type rdf:resource="#Book"/>
+  <hasAuthor rdf:resource="#prof_smith"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AI: A Modern Introduction</hasName>
+  <hasYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2022</hasYear>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ai_project">
+  <rdf:type rdf:resource="#Project"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AI Research Project</hasName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#robotics_project">
+  <rdf:type rdf:resource="#Project"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Robotics Lab Project</hasName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#room_101">
+  <rdf:type rdf:resource="#Classroom"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Auditorium 101</hasName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#lab_202">
+  <rdf:type rdf:resource="#Lab"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Robotics Lab 202</hasName>
+</owl:NamedIndividual>
+
+
+</rdf:RDF>

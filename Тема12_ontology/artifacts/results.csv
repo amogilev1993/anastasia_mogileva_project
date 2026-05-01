@@ -1,0 +1,11 @@
+cq,question,actual,expected,pass
+CQ1,Какие курсы изучает Alice?,"[""calc100"", ""db201""]","[""calc100"", ""db201""]",True
+CQ2,Кто преподаёт ml101?,"[""prof_smith""]","[""prof_smith""]",True
+CQ3,На какой кафедре проф. Smith?,"[""cs_dept""]","[""cs_dept""]",True
+CQ4,Аспиранты проф. Smith?,"[""david"", ""eve""]","[""david"", ""eve""]",True
+CQ5,Кафедры факультета инженерии?,"[""cs_dept""]","[""cs_dept""]",True
+CQ6,Публикации проф. Smith?,"[""book_ai"", ""paper_ml""]","[""book_ai"", ""paper_ml""]",True
+CQ7,Аудитории курса db201?,"[""room_101""]","[""room_101""]",True
+CQ8,Курсы кафедры CS?,"[""ai301"", ""algo301"", ""db201"", ""ml101""]","[""ai301"", ""algo301"", ""db201"", ""ml101""]",True
+CQ9,Сколько кредитов у ml101?,6,6,True
+CQ10,Участники проекта AI?,"[""david"", ""eve"", ""prof_smith""]","[""david"", ""eve"", ""prof_smith""]",True

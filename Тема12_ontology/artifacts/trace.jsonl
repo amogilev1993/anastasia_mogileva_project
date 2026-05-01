@@ -1,0 +1,10 @@
+{"cq": "CQ1", "question": "Какие курсы изучает Alice?", "expected": ["calc100", "db201"], "actual": ["calc100", "db201"], "pass": true}
+{"cq": "CQ2", "question": "Кто преподаёт ml101?", "expected": ["prof_smith"], "actual": ["prof_smith"], "pass": true}
+{"cq": "CQ3", "question": "На какой кафедре проф. Smith?", "expected": ["cs_dept"], "actual": ["cs_dept"], "pass": true}
+{"cq": "CQ4", "question": "Аспиранты проф. Smith?", "expected": ["david", "eve"], "actual": ["david", "eve"], "pass": true}
+{"cq": "CQ5", "question": "Кафедры факультета инженерии?", "expected": ["cs_dept"], "actual": ["cs_dept"], "pass": true}
+{"cq": "CQ6", "question": "Публикации проф. Smith?", "expected": ["book_ai", "paper_ml"], "actual": ["book_ai", "paper_ml"], "pass": true}
+{"cq": "CQ7", "question": "Аудитории курса db201?", "expected": ["room_101"], "actual": ["room_101"], "pass": true}
+{"cq": "CQ8", "question": "Курсы кафедры CS?", "expected": ["ai301", "algo301", "db201", "ml101"], "actual": ["ai301", "algo301", "db201", "ml101"], "pass": true}
+{"cq": "CQ9", "question": "Сколько кредитов у ml101?", "expected": 6, "actual": 6, "pass": true}
+{"cq": "CQ10", "question": "Участники проекта AI?", "expected": ["david", "eve", "prof_smith"], "actual": ["david", "eve", "prof_smith"], "pass": true}
