@@ -1,7 +1,7 @@
 Артефакты Темы 12:
   architecture.mmd (540 bytes)
-  architecture.png (80161 bytes)
-  architecture.svg (53529 bytes)
+  architecture.png (151420 bytes)
+  architecture.svg (64078 bytes)
   classes.csv (477 bytes)
   export_summary.txt (426 bytes)
   individuals.csv (575 bytes)
