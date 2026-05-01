@@ -1,8 +1,8 @@
 Reasoner attempts log
 ======================================================================
   Pellet                              FAIL: OwlReadyJavaError: Java error message is:
-Exception in thread "main" java.lang.UnsupportedClassVersionError: org/apache/jena/riot/lang/LangRDFXML has been compiled by a more recen  0.646s
-  HermiT                              OK                                                            0.365s
-  materialize_semantics (post)        OK                                                            0.138s
+Exception in thread "main" java.lang.UnsupportedClassVersionError: org/apache/jena/riot/lang/LangRDFXML has been compiled by a more recen  3.109s
+  HermiT                              OK                                                            1.081s
+  materialize_semantics (post)        OK                                                            0.219s
 
 Selected reasoner: HermiT

@@ -5,7 +5,7 @@
   inferred_facts.json                1,336 bytes
   input_profile.json                   195 bytes
   kpi_report.csv                       468 bytes
-  ontology_diff.png                126,005 bytes
+  ontology_diff.png                129,402 bytes
   queries_results.csv                1,493 bytes
   reasoner_log.txt                     566 bytes
   report.md                          4,754 bytes
