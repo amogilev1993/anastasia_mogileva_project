@@ -1,0 +1,6 @@
+scenario,category,before_count,after_count,delta,expected_after_count
+Q1,простой,2,2,0,2
+Q2,транзитивность,0,2,2,2
+Q3,инверсия,0,2,2,2
+Q4,симметрия,0,1,1,1
+Q5,цепочка / смешанный,0,2,2,2

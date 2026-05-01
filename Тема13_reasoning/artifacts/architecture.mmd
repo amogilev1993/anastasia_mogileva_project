@@ -1,0 +1,34 @@
+flowchart LR
+    subgraph Inputs[starter_pack/]
+        IND[individuals.csv]
+        REL[relationships.csv]
+        TBOX[ontology_seed_terms.csv]
+        Q[queries.txt]
+    end
+    subgraph Build[Build & Reason]
+        B1[build_ontology TBox + ABox]
+        B2[snapshot rdflib BEFORE]
+        B3[run_reasoner Pellet/HermiT/manual]
+        B4[snapshot rdflib AFTER]
+    end
+    subgraph Eval[Evaluate]
+        E1[run 5 SPARQL до/после]
+        E2[diff inferred facts]
+        E3[evaluate KPI]
+    end
+    subgraph Out[artifacts/]
+        A1[family.owl]
+        A2[queries_results.csv]
+        A3[inferred_facts.json]
+        A4[ontology_diff.png]
+        A5[kpi_report.csv]
+        A6[report.md]
+    end
+    Inputs --> B1 --> B2 --> B3 --> B4
+    B4 --> E1 --> E2 --> E3
+    B1 --> A1
+    E1 --> A2
+    E2 --> A3
+    B4 --> A4
+    E3 --> A5
+    E3 --> A6

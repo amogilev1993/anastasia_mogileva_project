@@ -1,0 +1,68 @@
+[
+  {
+    "subject": "Anna",
+    "predicate": "hasChild",
+    "object": "Boris",
+    "rule": "inverse_property"
+  },
+  {
+    "subject": "Anna",
+    "predicate": "hasChild",
+    "object": "Clara",
+    "rule": "inverse_property"
+  },
+  {
+    "subject": "Boris",
+    "predicate": "hasAncestor",
+    "object": "Anna",
+    "rule": "subPropertyOf+transitive"
+  },
+  {
+    "subject": "Boris",
+    "predicate": "hasChild",
+    "object": "Dmitry",
+    "rule": "inverse_property"
+  },
+  {
+    "subject": "Clara",
+    "predicate": "hasAncestor",
+    "object": "Anna",
+    "rule": "subPropertyOf+transitive"
+  },
+  {
+    "subject": "Clara",
+    "predicate": "hasChild",
+    "object": "Elena",
+    "rule": "inverse_property"
+  },
+  {
+    "subject": "Clara",
+    "predicate": "hasSibling",
+    "object": "Boris",
+    "rule": "symmetric"
+  },
+  {
+    "subject": "Dmitry",
+    "predicate": "hasAncestor",
+    "object": "Anna",
+    "rule": "subPropertyOf+transitive"
+  },
+  {
+    "subject": "Dmitry",
+    "predicate": "hasAncestor",
+    "object": "Boris",
+    "rule": "subPropertyOf+transitive"
+  },
+  {
+    "subject": "Elena",
+    "predicate": "hasAncestor",
+    "object": "Anna",
+    "rule": "subPropertyOf+transitive"
+  },
+  {
+    "subject": "Elena",
+    "predicate": "hasAncestor",
+    "object": "Clara",
+    "rule": "subPropertyOf+transitive"
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "individuals": 5,
+  "relationships": 5,
+  "classes": [
+    "Female",
+    "Male"
+  ],
+  "predicates_in_data": [
+    "hasParent",
+    "hasSibling"
+  ],
+  "missing_cells": 0,
+  "tbox_terms": 7
+}

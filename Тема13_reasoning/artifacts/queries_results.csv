@@ -1,0 +1,6 @@
+query_id,type,description,sparql,before,after,new_after_reasoning,nonempty_after,interpretation
+Q1,простой,Все индивиды класса Male,SELECT ?x WHERE { ?x rdf:type :Male },"Boris, Dmitry","Boris, Dmitry",,True,rdf:type не требует reasoning — Male указан явно у Boris и Dmitry.
+Q2,транзитивность,Все предки Дмитрия,SELECT ?x WHERE { :Dmitry :hasAncestor ?x },,"Anna, Boris","Anna, Boris",True,До reasoning hasAncestor у Dmitry пуст. После — добавляются Boris (по subPropertyOf hasParent⊑hasAncestor) и Anna (по транзитивности).
+Q3,инверсия,Дети Анны (через hasChild = hasParent⁻¹),SELECT ?x WHERE { :Anna :hasChild ?x },,"Boris, Clara","Boris, Clara",True,До reasoning hasChild не задан явно. После — материализуется как inverse_property от hasParent.
+Q4,симметрия,Сиблинги Клары,SELECT ?x WHERE { :Clara :hasSibling ?x },,Boris,Boris,True,До reasoning только Boris→Clara. После — symmetric делает обратное Clara→Boris.
+Q5,цепочка / смешанный,Внуки Анны,SELECT ?x WHERE { :Anna :hasChild ?y . ?y :hasChild ?x },,"Dmitry, Elena","Dmitry, Elena",True,"Цепочка hasChild∘hasChild требует, чтобы оба hasChild были выведены reasoner'ом из inverse hasParent. Внуки Анны: Dmitry, Elena."
