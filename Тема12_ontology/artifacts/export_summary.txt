@@ -3,7 +3,7 @@
   architecture.png (80161 bytes)
   architecture.svg (53529 bytes)
   classes.csv (477 bytes)
-  export_summary.txt (393 bytes)
+  export_summary.txt (426 bytes)
   individuals.csv (575 bytes)
   input_profile.json (823 bytes)
   kpi_report.csv (306 bytes)
