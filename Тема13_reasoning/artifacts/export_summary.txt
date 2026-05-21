@@ -1,0 +1,14 @@
+Тема 13 — экспортированные артефакты
+==================================================
+  architecture.mmd                     862 bytes
+  family.owl                         3,035 bytes
+  inferred_facts.json                1,336 bytes
+  input_profile.json                   195 bytes
+  kpi_report.csv                       468 bytes
+  ontology_diff.png                146,536 bytes
+  queries_results.csv                1,493 bytes
+  reasoner_log.txt                     565 bytes
+  report.md                          4,754 bytes
+  results.csv                          241 bytes
+==================================================
+Total files: 10

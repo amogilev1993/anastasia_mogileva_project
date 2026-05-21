@@ -1,0 +1,6 @@
+kpi,target,actual,passed,notes
+reasoner_started,>=1 OK in log,HermiT,True,Pellet/HermiT приоритетнее ручного замыкания
+queries_count,==5,5,True,5 SPARQL разной сложности
+queries_nonempty_after,>=3,5,True,после reasoning
+inferred_facts,>=3,11,True,новые ABox-тройки между индивидами
+ontology_consistent,no inconsistent classes,OK,True,ни один класс не выведен в owl:Nothing
