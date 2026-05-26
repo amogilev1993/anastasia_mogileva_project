@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Epstein Files</title>
+<style>
+  :root {
+    --bg: #0e0f13;
+    --bg-2: #14161d;
+    --fg: #eef0f5;
+    --muted: #9aa3b2;
+    --accent: #e63946;
+    --accent-2: #f1c40f;
+    --line: #2a2e39;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow: hidden;
+  }
+  #stage {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4vh 6vw;
+  }
+  .slide {
+    display: none;
+    width: 100%;
+    max-width: 1100px;
+    animation: fade 0.4s ease;
+  }
+  .slide.active { display: block; }
+  @keyframes fade {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .eyebrow {
+    color: var(--accent);
+    font-size: 0.95rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  h1 {
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 1.05;
+    margin: 0 0 1.5rem;
+    letter-spacing: -0.02em;
+  }
+  h2 {
+    font-size: clamp(1.6rem, 3.4vw, 2.6rem);
+    line-height: 1.15;
+    margin: 0 0 1.5rem;
+    letter-spacing: -0.01em;
+  }
+  p, li {
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    line-height: 1.6;
+    color: var(--fg);
+  }
+  .muted { color: var(--muted); }
+  ul {
+    padding-left: 1.25rem;
+    margin: 0;
+  }
+  ul li { margin-bottom: 0.7rem; }
+  .tag {
+    display: inline-block;
+    padding: 0.25rem 0.7rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-right: 0.5rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 2rem;
+  }
+  .card {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 1.2rem 1.4rem;
+  }
+  .card .who {
+    font-weight: 700;
+    color: var(--accent-2);
+    margin-bottom: 0.3rem;
+  }
+  .myth-truth {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem 1.5rem;
+    align-items: start;
+  }
+  .myth, .truth {
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+  }
+  .myth { background: rgba(230, 57, 70, 0.08); }
+  .truth { background: rgba(46, 204, 113, 0.08); }
+  .label {
+    display: block;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+  .myth .label { color: var(--accent); }
+  .truth .label { color: #2ecc71; }
+  .quote {
+    border-left: 3px solid var(--accent);
+    padding: 0.4rem 0 0.4rem 1rem;
+    color: var(--muted);
+    font-style: italic;
+    margin: 1rem 0;
+  }
+  .meme {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 1rem 1.3rem;
+    margin-bottom: 0.9rem;
+  }
+  .meme .title {
+    color: var(--accent-2);
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+  .nav {
+    position: fixed;
+    bottom: 1.2rem;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+    z-index: 10;
+  }
+  .nav button {
+    background: var(--bg-2);
+    color: var(--fg);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  .nav button:hover { background: #1c1f29; border-color: #3a3f4d; }
+  .counter {
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    font-size: 0.95rem;
+    min-width: 4ch;
+    text-align: center;
+  }
+  .progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    background: var(--accent);
+    transition: width 0.25s ease;
+    z-index: 20;
+  }
+  .hint {
+    position: fixed;
+    top: 1rem;
+    right: 1.2rem;
+    color: var(--muted);
+    font-size: 0.8rem;
+    z-index: 10;
+  }
+  @media (max-width: 720px) {
+    .grid, .myth-truth { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<div class="hint">← / → to navigate</div>
+
+<div id="stage">
+
+  <section class="slide active">
+    <div class="eyebrow">Presentation</div>
+    <h1>The Epstein Files</h1>
+    <p class="muted">Documents, names, myths, and memes — what's actually inside.</p>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">Introduction</div>
+    <h2>What are the Epstein Files?</h2>
+    <p>The "Epstein Files" are documents about the rich and notorious man <strong>Jeffrey Epstein</strong>.</p>
+    <p>The police released them to the public.</p>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">Part 1</div>
+    <h2>What is it?</h2>
+    <ul>
+      <li>Epstein owned an island and a private plane.</li>
+      <li>He did terrible things to women.</li>
+      <li>He was arrested in <strong>2019</strong>.</li>
+      <li>He later died in prison.</li>
+      <li>In <strong>2026</strong>, the US government released <strong>3.5 million pages</strong> about him: names, photos, phone numbers.</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">Part 2 · Celebrities</div>
+    <h2>Which names appear in the files?</h2>
+    <div class="quote">A name in the files ≠ a bad person. Maybe they just hung out.</div>
+    <div class="grid">
+      <div class="card">
+        <div class="who">Trump</div>
+        <p>The name appears many times. He says: "I didn't know about the bad stuff."</p>
+      </div>
+      <div class="card">
+        <div class="who">Prince Andrew</div>
+        <p>A woman accused him. He lost his royal duties.</p>
+      </div>
+      <div class="card">
+        <div class="who">Bill Clinton</div>
+        <p>Flew on Epstein's plane.</p>
+      </div>
+      <div class="card">
+        <div class="who">Elon Musk</div>
+        <p>Asked about a party. Denies anything bad.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">Part 2 · Celebrities</div>
+    <h2>More names</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="who">Bill Gates</div>
+        <p>Epstein talked about him. Gates denies any wrongdoing.</p>
+      </div>
+      <div class="card">
+        <div class="who">Karina — a dentist from Belarus</div>
+        <p>Received a large sum of money <em>after</em> Epstein's death. Strange.</p>
+      </div>
+    </div>
+    <p class="muted" style="margin-top: 1.5rem;">Being mentioned doesn't equal being guilty — but it raises questions.</p>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">Part 3</div>
+    <h2>Myths and Truth</h2>
+    <div class="myth-truth">
+      <div class="myth">
+        <span class="label">Myth</span>
+        There's a secret list of bad people.
+      </div>
+      <div class="truth">
+        <span class="label">Truth</span>
+        No. The FBI hasn't found such a list.
+      </div>
+
+      <div class="myth">
+        <span class="label">Myth</span>
+        Epstein was murdered.
+      </div>
+      <div class="truth">
+        <span class="label">Truth</span>
+        The police said it was suicide. But not everyone believes it.
+      </div>
+
+      <div class="myth">
+        <span class="label">Myth</span>
+        There's a secret "pizza" code in the files (an old rumor).
+      </div>
+      <div class="truth">
+        <span class="label">Truth</span>
+        It's not true.
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">Part 4 · Internet Culture</div>
+    <h2>Epstein Memes</h2>
+    <div class="meme">
+      <div class="title">1. "Epstein didn't kill himself"</div>
+      <p>The official version was "suicide," but no one believes it. The meme implies he was killed to keep him quiet.</p>
+    </div>
+    <div class="meme">
+      <div class="title">2. Epstein Island</div>
+      <p>There were weird parties there. The joke: "Let's go to the island?" means "Are you trying to get into trouble?"</p>
+    </div>
+    <div class="meme">
+      <div class="title">3. The Client List</div>
+      <p>Everyone expected a list of the biggest names. But there was nothing there. Meme: "The rich hid the truth, as always."</p>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">Part 4 · Internet Culture</div>
+    <h2>Why do people joke about this?</h2>
+    <p>It's <strong>dark humor</strong>. People are angry at the rich and powerful.</p>
+    <div class="quote">Memes are a way of saying: "We remember everything and haven't forgiven anything."</div>
+    <p class="muted">Humor becomes the language of distrust toward institutions.</p>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">Conclusion</div>
+    <h2>What does it all mean?</h2>
+    <ul>
+      <li>The "Epstein Files" aren't just one secret list — they're many old documents.</li>
+      <li>They show that rich people helped each other.</li>
+      <li>Some knew about the bad stuff but stayed silent.</li>
+      <li>And memes about "Epstein didn't kill himself" will stay on the internet forever.</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">The End</div>
+    <h1>Thank you.</h1>
+    <p class="muted">Questions?</p>
+  </section>
+
+</div>
+
+<div class="nav">
+  <button id="prev" aria-label="Previous slide">← Prev</button>
+  <span class="counter" id="counter">1 / 1</span>
+  <button id="next" aria-label="Next slide">Next →</button>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const counter = document.getElementById('counter');
+  const progress = document.getElementById('progress');
+  let current = 0;
+
+  function show(index) {
+    slides[current].classList.remove('active');
+    current = (index + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    counter.textContent = `${current + 1} / ${slides.length}`;
+    progress.style.width = `${((current + 1) / slides.length) * 100}%`;
+  }
+
+  document.getElementById('next').addEventListener('click', () => show(current + 1));
+  document.getElementById('prev').addEventListener('click', () => show(current - 1));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') show(current + 1);
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') show(current - 1);
+    if (e.key === 'Home') show(0);
+    if (e.key === 'End') show(slides.length - 1);
+  });
+
+  show(0);
+</script>
+
+</body>
+</html>
