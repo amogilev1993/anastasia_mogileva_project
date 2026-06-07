@@ -1,0 +1,100 @@
+digraph MentalistScheme {
+    graph [layout=circo, mindist=0.7, overlap=false, splines=true,
+           fontname="DejaVu Sans", bgcolor="white", pad=0.4, dpi=150];
+    node  [fontname="DejaVu Sans", fontsize=11, style="filled", penwidth=1.4];
+    edge  [fontname="DejaVu Sans", fontsize=9, color="#555555", penwidth=1.3];
+
+    /* ===== КОМАНДА РАССЛЕДОВАНИЯ (детективы, светло-синие) ===== */
+    Jane    [label="Патрик Джейн\n(консультант-менталист)", shape=ellipse, fillcolor="#FFE08A", penwidth=2.6, color="#B8860B"];
+    Lisbon  [label="Тереза Лисбон\n(старший агент CBI)", shape=ellipse, fillcolor="#BBD7F2"];
+    Cho     [label="Кимбелл Чо\n(агент)", shape=ellipse, fillcolor="#BBD7F2"];
+    Rigsby  [label="Уэйн Ригсби\n(агент)", shape=ellipse, fillcolor="#BBD7F2"];
+    VanPelt [label="Грейс Ван Пелт\n(агент)", shape=ellipse, fillcolor="#BBD7F2"];
+
+    /* ===== АНТАГОНИСТ ===== */
+    RedJohn [label="Red John\n(Кровавый Джон,\nсерийный убийца)", shape=ellipse, fillcolor="#D98B8B", penwidth=2.6, color="#8B0000"];
+
+    /* ===== ОРГАНИЗАЦИЯ ===== */
+    Blake   [label="«Ассоциация Блейка»\n(тайная сеть\nсообщников)", shape=octagon, fillcolor="#D6C3E8"];
+
+    /* ===== ПОДОЗРЕВАЕМЫЕ (список семи, песочный) ===== */
+    McAllister [label="Томас Макаллистер\n(шериф)", shape=ellipse, fillcolor="#F2D9B0", penwidth=2.4, color="#C01C28"];
+    Bertram    [label="Гейл Бертрам\n(директор CBI)", shape=ellipse, fillcolor="#F2D9B0"];
+    Kirkland   [label="Боб Киркланд\n(Нацбезопасность)", shape=ellipse, fillcolor="#F2D9B0"];
+    Stiles     [label="Брет Стайлз\n(лидер культа)", shape=ellipse, fillcolor="#F2D9B0"];
+    Haffner    [label="Рэймонд Хаффнер\n(охранная фирма)", shape=ellipse, fillcolor="#F2D9B0"];
+    Smith      [label="Рид Смит\n(агент ФБР)", shape=ellipse, fillcolor="#F2D9B0"];
+    Partridge  [label="Бретт Партридж\n(криминалист)", shape=ellipse, fillcolor="#F2D9B0"];
+
+    /* ===== ЖЕРТВЫ ===== */
+    Family  [label="Семья Джейна\n(Анджела и Шарлотта)", shape=ellipse, fillcolor="#D9D9D9"];
+
+    /* ===== СОБЫТИЯ (красные ромбы) ===== */
+    Provoke   [label="Джейн оскорбил\nRed John в\nтелеэфире", shape=diamond, fillcolor="#F8B5B0", height=1.2, width=1.8];
+    Murder    [label="Убийство\nсемьи Джейна", shape=diamond, fillcolor="#F8B5B0", height=1.1, width=1.6];
+    Mole      [label="Крот Red John\nвнутри CBI", shape=diamond, fillcolor="#F8B5B0", height=1.1, width=1.6];
+    Handshake [label="Личная встреча:\nрукопожатие\nДжейна и убийцы", shape=diamond, fillcolor="#F8B5B0", height=1.2, width=1.8];
+    Final     [label="Разоблачение и\nгибель Макаллистера", shape=diamond, fillcolor="#F8B5B0", height=1.2, width=1.9];
+
+    /* ===== ДОКАЗАТЕЛЬСТВА (зелёные блоки) ===== */
+    Smiley [label="Кровавый смайлик\nна стене\n(почерк убийцы)", shape=box, fillcolor="#BFE3B6"];
+    Poem   [label="Стихотворение\nУ. Блейка «Tyger»\n(ключ к личности)", shape=box, fillcolor="#BFE3B6"];
+    ListE  [label="Список семи\nподозреваемых", shape=box, fillcolor="#BFE3B6"];
+    Mark   [label="Метка членов\nАссоциации Блейка\n(три точки)", shape=box, fillcolor="#BFE3B6"];
+    Detail [label="Запомнившаяся\nдеталь при встрече", shape=box, fillcolor="#BFE3B6"];
+
+    /* ===== СВЯЗИ: КОМАНДА ===== */
+    Jane   -> Lisbon  [label="партнёры,\nдоверие", dir=both, color="#1A5FB4", penwidth=2.0];
+    Lisbon -> Cho     [label="руководит", dir=both];
+    Lisbon -> Rigsby  [label="руководит", dir=both];
+    Lisbon -> VanPelt [label="руководит", dir=both];
+    Rigsby -> VanPelt [label="личные\nотношения", dir=both, style=dashed];
+
+    /* ===== ЯДРО: ВЕНДЕТТА ===== */
+    Jane    -> Provoke  [label="спровоцировал", penwidth=1.6];
+    Provoke -> Murder   [label="месть убийцы", color="#C01C28", penwidth=1.8];
+    RedJohn -> Murder   [label="исполнитель", color="#C01C28", penwidth=1.8];
+    Murder  -> Family   [label="жертвы", color="#C01C28"];
+    Jane    -> RedJohn  [label="личная охота\n(вендетта)", dir=both, color="#C01C28", penwidth=2.2];
+    Jane    -> Lisbon   [label="дело Red John", style=dashed];
+
+    /* ===== УЛИКИ И ПОЧЕРК ===== */
+    Murder    -> Smiley  [label="оставлен\nпочерк", color="#C01C28"];
+    RedJohn   -> Smiley  [label="фирменный\nзнак", penwidth=1.6];
+    Partridge -> Smiley  [label="первым изучил", style=dashed];
+    Jane      -> Poem    [label="разгадал\nотсылку", color="#B8860B", penwidth=1.6];
+    Poem      -> RedJohn [label="ключ к\nличности", color="#B8860B", penwidth=1.8];
+    Handshake -> Jane    [label="запомнил\nдеталь", color="#B8860B"];
+    RedJohn   -> Handshake[label="контакт", style=dashed];
+    Detail    -> McAllister [label="примета\nсовпала", style=dashed, color="#B8860B"];
+    Jane      -> Detail  [label="вспомнил"];
+
+    /* ===== СПИСОК ПОДОЗРЕВАЕМЫХ ===== */
+    Jane  -> ListE [label="составил", penwidth=1.6];
+    ListE -> McAllister [label="в списке"];
+    ListE -> Bertram    [label="в списке"];
+    ListE -> Kirkland   [label="в списке"];
+    ListE -> Stiles     [label="в списке"];
+    ListE -> Haffner    [label="в списке"];
+    ListE -> Smith      [label="в списке"];
+    ListE -> Partridge  [label="в списке"];
+
+    /* ===== АССОЦИАЦИЯ БЛЕЙКА ===== */
+    RedJohn -> Blake    [label="покровитель\n/ лидер", penwidth=1.8];
+    Blake   -> Bertram  [label="член сети", style=dashed];
+    Blake   -> Kirkland [label="член сети", style=dashed];
+    Blake   -> Haffner  [label="член сети", style=dashed];
+    Blake   -> Smith    [label="член сети", style=dashed];
+    Mark    -> Blake    [label="опознавательный\nзнак"];
+    Mole    -> Blake    [label="связан с\nсетью", style=dashed];
+    Mole    -> VanPelt  [label="крот — жених\nВан Пелт", style=dashed, color="#C01C28"];
+
+    /* ===== РАЗВЯЗКА ===== */
+    McAllister -> RedJohn [label="ОКАЗАЛСЯ\nRed John", color="#C01C28", penwidth=2.4];
+    Jane       -> Final   [label="вычислил\nи устранил", color="#C01C28", penwidth=1.8];
+    Final      -> McAllister [label="разоблачён", color="#C01C28"];
+
+    /* ===== ПРОЧИЕ СВЯЗИ ПОДОЗРЕВАЕМЫХ ===== */
+    Stiles -> Jane [label="манипуляции\n/ помощь", style=dashed];
+    Smith  -> Jane [label="курировал\nв ФБР", style=dashed];
+}
