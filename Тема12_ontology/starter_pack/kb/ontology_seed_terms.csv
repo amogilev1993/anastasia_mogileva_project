@@ -1,0 +1,39 @@
+term,kind,parent,description
+Person,Class,Thing,Любой человек в университетской среде
+Student,Class,Person,Студент любой ступени
+UndergraduateStudent,Class,Student,Студент бакалавриата
+GraduateStudent,Class,Student,Студент магистратуры/аспирантуры
+MasterStudent,Class,GraduateStudent,Магистрант
+PhDStudent,Class,GraduateStudent,Аспирант
+AcademicStaff,Class,Person,Преподавательский состав
+Professor,Class,AcademicStaff,Профессор
+Lecturer,Class,AcademicStaff,Лектор/преподаватель без степени профессора
+AdministrativeStaff,Class,Person,Административный сотрудник
+AcademicUnit,Class,Thing,Учебно-научное подразделение
+Department,Class,AcademicUnit,Кафедра
+Faculty,Class,AcademicUnit,Факультет/школа (объединяет кафедры)
+Course,Class,Thing,Учебный курс
+UndergraduateCourse,Class,Course,Курс бакалавриата
+GraduateCourse,Class,Course,Курс магистратуры/аспирантуры
+Publication,Class,Thing,Научная публикация
+Article,Class,Publication,Научная статья
+Book,Class,Publication,Книга/монография
+Project,Class,Thing,Научно-исследовательский проект
+Room,Class,Thing,Помещение
+Classroom,Class,Room,Учебная аудитория
+Lab,Class,Room,Научная/учебная лаборатория
+memberOf,ObjectProperty,,Person → AcademicUnit (принадлежность подразделению)
+partOf,ObjectProperty,,Department → Faculty (входит в состав)
+teaches,ObjectProperty,,AcademicStaff → Course
+taughtBy,ObjectProperty,,Course → AcademicStaff (inverse of teaches)
+enrolledIn,ObjectProperty,,Student → Course
+supervises,ObjectProperty,,Professor → PhDStudent
+offeredBy,ObjectProperty,,Course → Department
+hasAuthor,ObjectProperty,,Publication → Person
+worksOnProject,ObjectProperty,,Person → Project
+heldIn,ObjectProperty,,Course → Room
+hasName,DataProperty,,Person → string (имя)
+hasEmail,DataProperty,,Person → string (functional)
+hasAge,DataProperty,,Person → integer
+hasCredits,DataProperty,,Course → integer
+hasYear,DataProperty,,Publication → integer

@@ -1,0 +1,7 @@
+kpi,target,actual,pass,notes
+n_classes,>=15,23,True,
+n_properties,>=10,15,True,"object=10, data=5"
+n_individuals,>=20,27,True,
+n_constraints,>=5,34,True,domain/range/disjoint/functional/cardinality/inverse
+owl_roundtrip_ok,True,True,True,save/load одинаково
+cq_passed,>=5,10,True,10 CQ всего

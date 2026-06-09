@@ -1,0 +1,28 @@
+id,class,name,email,age,extra
+alice,UndergraduateStudent,Alice Ivanova,alice@uni.edu,20,
+bob,UndergraduateStudent,Bob Petrov,bob@uni.edu,21,
+carol,MasterStudent,Carol Smirnova,carol@uni.edu,23,
+david,PhDStudent,David Sokolov,david@uni.edu,26,
+eve,PhDStudent,Eve Volkova,eve@uni.edu,28,
+frank,MasterStudent,Frank Orlov,frank@uni.edu,24,
+prof_smith,Professor,Sergey Smith,smith@uni.edu,52,
+prof_brown,Professor,Olga Brown,brown@uni.edu,47,
+lect_jones,Lecturer,Ivan Jones,jones@uni.edu,35,
+admin_pavlov,AdministrativeStaff,Pavel Pavlov,pavlov@uni.edu,40,
+cs_dept,Department,Computer Science Department,,,
+math_dept,Department,Mathematics Department,,,
+physics_dept,Department,Physics Department,,,
+eng_faculty,Faculty,Faculty of Engineering,,,
+sci_faculty,Faculty,Faculty of Science,,,
+ml101,GraduateCourse,Machine Learning 101,,,credits=6
+db201,UndergraduateCourse,Databases 201,,,credits=4
+calc100,UndergraduateCourse,Calculus 100,,,credits=5
+algo301,GraduateCourse,Advanced Algorithms,,,credits=6
+ai301,GraduateCourse,Artificial Intelligence,,,credits=6
+paper_ml,Article,"Deep Learning for Tabular Data",,,year=2024
+paper_db,Article,"Indexing in NoSQL Systems",,,year=2023
+book_ai,Book,"AI: A Modern Introduction",,,year=2022
+ai_project,Project,AI Research Project,,,
+robotics_project,Project,Robotics Lab Project,,,
+room_101,Classroom,Auditorium 101,,,
+lab_202,Lab,Robotics Lab 202,,,

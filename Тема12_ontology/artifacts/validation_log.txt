@@ -1,0 +1,15 @@
+ontology IRI: http://example.org/university.owl
+classes: 23
+object_properties: 10
+data_properties: 5
+individuals: 27
+constraints (counted): 34
+roundtrip ok: True
+CQ matched: 10/10
+KPI:
+  - n_classes: target=>=15, actual=23, pass=True
+  - n_properties: target=>=10, actual=15, pass=True
+  - n_individuals: target=>=20, actual=27, pass=True
+  - n_constraints: target=>=5, actual=34, pass=True
+  - owl_roundtrip_ok: target=True, actual=True, pass=True
+  - cq_passed: target=>=5, actual=10, pass=True

@@ -1,0 +1,12 @@
+case_id,input_json,expected_json,category,notes
+CQ1,"{""query"":""courses_of_student"",""student"":""alice""}","{""courses"":[""calc100"",""db201""]}",smoke,enrolledIn — список курсов студента
+CQ2,"{""query"":""teachers_of_course"",""course"":""ml101""}","{""teachers"":[""prof_smith""]}",smoke,taughtBy/teaches
+CQ3,"{""query"":""department_of"",""person"":""prof_smith""}","{""department"":[""cs_dept""]}",smoke,memberOf
+CQ4,"{""query"":""phd_students_of"",""professor"":""prof_smith""}","{""students"":[""david"",""eve""]}",smoke,supervises
+CQ5,"{""query"":""departments_of_faculty"",""faculty"":""eng_faculty""}","{""departments"":[""cs_dept""]}",smoke,partOf
+CQ6,"{""query"":""publications_of"",""person"":""prof_smith""}","{""publications"":[""book_ai"",""paper_ml""]}",smoke,hasAuthor inverse
+CQ7,"{""query"":""rooms_of_course"",""course"":""db201""}","{""rooms"":[""room_101""]}",smoke,heldIn
+CQ8,"{""query"":""courses_of_department"",""department"":""cs_dept""}","{""courses"":[""ai301"",""algo301"",""db201"",""ml101""]}",smoke,offeredBy inverse
+CQ9,"{""query"":""credits_of_course"",""course"":""ml101""}","{""credits"":6}",smoke,DataProperty hasCredits
+CQ10,"{""query"":""project_members"",""project"":""ai_project""}","{""members"":[""david"",""eve"",""prof_smith""]}",smoke,worksOnProject
+CQ_NEG_1,"{""query"":""courses_of_student"",""student"":""prof_smith""}","{""error"":""not_a_student""}",negative,domain ограничение enrolledIn

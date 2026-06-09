@@ -1,0 +1,41 @@
+{
+  "individuals_total": 27,
+  "individuals_by_class": {
+    "Department": 3,
+    "GraduateCourse": 3,
+    "UndergraduateStudent": 2,
+    "MasterStudent": 2,
+    "PhDStudent": 2,
+    "Professor": 2,
+    "Faculty": 2,
+    "UndergraduateCourse": 2,
+    "Article": 2,
+    "Project": 2,
+    "Lecturer": 1,
+    "AdministrativeStaff": 1,
+    "Book": 1,
+    "Classroom": 1,
+    "Lab": 1
+  },
+  "relationships_total": 45,
+  "relationships_by_property": {
+    "memberOf": 10,
+    "enrolledIn": 8,
+    "teaches": 5,
+    "offeredBy": 5,
+    "hasAuthor": 4,
+    "worksOnProject": 4,
+    "heldIn": 4,
+    "partOf": 3,
+    "supervises": 2
+  },
+  "seed_terms_total": 38,
+  "seed_classes": 23,
+  "seed_object_props": 10,
+  "seed_data_props": 5,
+  "cases_total": 11,
+  "missing_values": {
+    "individuals": 53,
+    "relationships": 0
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "min_classes": 15,
+  "min_object_properties": 8,
+  "min_data_properties": 2,
+  "min_individuals": 20,
+  "min_constraints": 5,
+  "expected_top_classes": ["Person", "AcademicUnit", "Course", "Publication", "Project", "Room"],
+  "expected_subclass_pairs": [
+    ["Student", "Person"],
+    ["UndergraduateStudent", "Student"],
+    ["GraduateStudent", "Student"],
+    ["MasterStudent", "GraduateStudent"],
+    ["PhDStudent", "GraduateStudent"],
+    ["Professor", "AcademicStaff"],
+    ["AcademicStaff", "Person"],
+    ["Department", "AcademicUnit"],
+    ["Faculty", "AcademicUnit"]
+  ]
+}
